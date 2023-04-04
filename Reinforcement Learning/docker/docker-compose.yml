@@ -1,0 +1,18 @@
+version: "3"
+services:
+  main:
+    container_name: rl
+    image: ksterx/rl:win-0.1
+    ports:
+      - "8888:8888"
+    restart: always
+    tty: true
+    volumes:
+      - ../:/workspace
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]
